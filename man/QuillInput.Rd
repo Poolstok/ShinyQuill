@@ -17,6 +17,8 @@ QuillInput(inputId, value = "", configuration = NULL, options = NULL)
 }
 \value{
 A Shiny input widget.
+
+A Shiny input widget.
 }
 \description{
 Create a Quill Input Widget
