@@ -2,6 +2,3 @@
 
 export(QuillInput)
 export(updateQuillInput)
-importFrom(htmltools,htmlDependency)
-importFrom(htmltools,tags)
-importFrom(reactR,createReactShinyInput)

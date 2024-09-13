@@ -1,28 +1,50 @@
+library(htmltools)
+library(reactR)
+library(base64enc)
+
 #' Create a Quill Input Widget
 #'
-#' This function creates a Quill input widget for use in Shiny applications.
+#' @param inputId The input ID.
+#' @param value The initial value (default is an empty string).
+#' @param configuration A list of configuration options passed to the JavaScript component.
+#' @param options A list of options (can be empty if not used).
+#' @return A Shiny input widget.
+#' @export
+#' Create a Quill Input Widget
 #'
 #' @param inputId The input ID.
-#'
-#' @return A Quill input widget.
-#' @importFrom reactR createReactShinyInput
-#' @importFrom htmltools htmlDependency tags
-#'
+#' @param value The initial value (default is an empty string).
+#' @param configuration A list of configuration options passed to the JavaScript component.
+#' @param options A list of options (can be empty if not used).
+#' @return A Shiny input widget.
 #' @export
-QuillInput <- function(inputId, default = "") {
-  reactR::createReactShinyInput(
-    inputId,
-    "QuillInput",
-    htmltools::htmlDependency(
-      name = "QuillInput",
-      version = "1.0.2",
-      src = "www/ShinyQuill/QuillInput",
-      package = "ShinyQuill",
-      script = "QuillInput.js"
+QuillInput <- function(inputId, value = "", configuration = NULL, options = NULL) {
+  # Ensure value is a character string
+  value <- as.character(value)
+
+  # Base64 encode the value to prevent escaping
+  encoded_value <- base64encode(charToRaw(value))
+
+  # Include inputId and encoded_value in the configuration
+  configuration <- modifyList(
+    list(inputId = inputId, encoded_value = encoded_value),
+    if (is.null(configuration)) list() else configuration
+  )
+
+  createReactShinyInput(
+    inputId = inputId,
+    class = 'QuillInput',
+    dependencies = htmlDependency(
+      name = 'ShinyQuill',
+      version = '1.0.0',
+      src = c(file = 'www/ShinyQuill/QuillInput'),
+      script = 'QuillInput.js',
+      stylesheet = 'quill.snow.css',
+      package = 'ShinyQuill'
     ),
-    default,
-    list(),
-    htmltools::tags$span
+    default = "",  # Set to empty string
+    configuration = configuration,  # Pass encoded_value here
+    container = htmltools::tags$div
   )
 }
 

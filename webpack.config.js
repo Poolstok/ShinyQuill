@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
     mode: 'development', // Add this line
-    entry: path.join(__dirname, 'srcjs', 'QuillInput.jsx'),
+    entry: path.join(__dirname, 'srcjs', 'QuillInput.js'),
     output: {
         path: path.join(__dirname, 'inst/www/ShinyQuill/QuillInput'),
         filename: 'QuillInput.js'

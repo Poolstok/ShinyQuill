@@ -4,14 +4,20 @@
 \alias{QuillInput}
 \title{Create a Quill Input Widget}
 \usage{
-QuillInput(inputId, default = "")
+QuillInput(inputId, value = "", configuration = NULL, options = NULL)
 }
 \arguments{
 \item{inputId}{The input ID.}
+
+\item{value}{The initial value (default is an empty string).}
+
+\item{configuration}{A list of configuration options passed to the JavaScript component.}
+
+\item{options}{A list of options (can be empty if not used).}
 }
 \value{
-A Quill input widget.
+A Shiny input widget.
 }
 \description{
-This function creates a Quill input widget for use in Shiny applications.
+Create a Quill Input Widget
 }
