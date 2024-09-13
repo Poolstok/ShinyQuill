@@ -13,3 +13,5 @@ Imports:
     htmltools,
     reactR,
     shiny
+URL: https://github.com/Poolstok/ShinyQuill
+BugReports: https://github.com/Poolstok/ShinyQuill/issues
