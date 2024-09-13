@@ -12,6 +12,7 @@ RoxygenNote: 7.3.2
 Imports: 
     htmltools,
     reactR,
-    shiny
+    shiny,
+    base64enc
 URL: https://github.com/Poolstok/ShinyQuill
 BugReports: https://github.com/Poolstok/ShinyQuill/issues
