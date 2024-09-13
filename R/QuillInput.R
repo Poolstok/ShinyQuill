@@ -1,7 +1,7 @@
-library(htmltools)
-library(reactR)
-library(base64enc)
-
+#' @import reactR
+#' @import base64enc
+#' @import htmltools
+#'
 #' Create a Quill Input Widget
 #'
 #' @param inputId The input ID.
