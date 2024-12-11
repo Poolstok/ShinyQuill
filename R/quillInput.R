@@ -1,26 +1,3 @@
-# includeQuill <- function()
-# {
-#   htmltools::htmlDependency(
-#     name = "includeQuill",
-#     version = "0.1.0",
-#     package = "ShinyQuill",
-#     src = c(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist"),
-#     script = "quill.js",
-#     stylesheet = "quill.snow.css"
-#   )
-# }
-#
-# includeCustomFuncs <- function()
-# {
-#   htmltools::htmlDependency(
-#     name = "includeScripts",
-#     version = "0.1.0",
-#     package = "ShinyQuill",
-#     src = "www",
-#     script = "createQuill.js"
-#   )
-# }
-
 CreateStyleArg <- function(width, height, resize = c("vertical", "horizontal", "both"))
 {
   style <- paste0("width: ", width,
