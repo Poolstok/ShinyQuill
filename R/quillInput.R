@@ -203,7 +203,7 @@ quillInput <- function(id, label,
       tags$label(label),
       tags$div(id = id, style = style),
       tags$script(HTML(sprintf("
-        $(document).on('shiny:value', function(event) {
+        $(document).on('shiny:value shiny:bound', function(event) {
         if (event.target.id === '%s') {
           CreateQuill('%s', '%s', '%s');
         }});", id, id, value, toolbarOptions)))
