@@ -205,7 +205,7 @@ quillInput <- function(id, label,
       tags$script(HTML(sprintf("
         $(document).on('shiny:connected', function() {
           CreateQuill('%s', '%s', '%s');
-        })", id, value, toolbarOptions)))
+        });", id, value, toolbarOptions)))
     )
   )
 }

@@ -1,10 +1,10 @@
-# tryCatch({
-#     detach("package:ShinyQuill", unload=TRUE)},
-#     error = function(e) {
-#         print("Package was not loaded")
-#     }
-# )
-# devtools::document()
+tryCatch({
+    detach("package:ShinyQuill", unload=TRUE)},
+    error = function(e) {
+        print("Package was not loaded")
+    }
+)
+devtools::document()
 devtools::install()
 
 library(shiny)
