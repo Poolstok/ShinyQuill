@@ -1,25 +1,25 @@
-includeQuill <- function()
-{
-  htmltools::htmlDependency(
-    name = "includeQuill",
-    version = "0.1.0",
-    package = "ShinyQuill",
-    src = c(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist"),
-    script = "quill.js",
-    stylesheet = "quill.snow.css"
-  )
-}
-
-includeCustomFuncs <- function()
-{
-  htmltools::htmlDependency(
-    name = "includeScripts",
-    version = "0.1.0",
-    package = "ShinyQuill",
-    src = "www",
-    script = "createQuill.js"
-  )
-}
+# includeQuill <- function()
+# {
+#   htmltools::htmlDependency(
+#     name = "includeQuill",
+#     version = "0.1.0",
+#     package = "ShinyQuill",
+#     src = c(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist"),
+#     script = "quill.js",
+#     stylesheet = "quill.snow.css"
+#   )
+# }
+#
+# includeCustomFuncs <- function()
+# {
+#   htmltools::htmlDependency(
+#     name = "includeScripts",
+#     version = "0.1.0",
+#     package = "ShinyQuill",
+#     src = "www",
+#     script = "createQuill.js"
+#   )
+# }
 
 CreateStyleArg <- function(width, height, resize = c("vertical", "horizontal", "both"))
 {
@@ -195,19 +195,23 @@ quillInput <- function(id, label,
                        ...)
 {
   style <- CreateStyleArg(width, height, resize)
+  shiny::addResourcePath("shinyquill", system.file("www", package = "ShinyQuill"))
 
   return(
     tagList(
-      includeQuill(),
-      includeCustomFuncs(),
+      shiny::singleton(
+        shiny::tags$head(
+          shiny::tags$script(src = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"),
+          shiny::tags$script(src = "shinyquill/createQuill.js"),
+          shiny::tags$link(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css", rel = "stylesheet")
+        )
+      ),
+      # includeQuill(),
+      # includeCustomFuncs(),
       tags$label(label),
-      tags$div(id = id, style = style),
+      tags$div(id = id, style = style, class ="shiny-quill-editor"),
       tags$script(HTML(sprintf("
-        $(document).on('shiny:value shiny:bound', function(event) {
-        if (event.target.id === '%s') {
-          console.log('event triggered!');
-          CreateQuill('%s', '%s', '%s');
-        }});", id, id, value, toolbarOptions)))
+          CreateQuill('%s', '%s', '%s');", id, value, toolbarOptions)))
     )
   )
 }
