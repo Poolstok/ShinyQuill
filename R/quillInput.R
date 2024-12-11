@@ -202,10 +202,13 @@ quillInput <- function(id, label,
       includeCustomFuncs(),
       tags$label(label),
       tags$div(id = id, style = style),
+      # tags$script(HTML(sprintf("
+      #   $(document).on('shiny:connected', function() {
+      #     CreateQuill('%s', '%s', '%s');
+      #   });", id, value, toolbarOptions)))
       tags$script(HTML(sprintf("
-        $(document).on('shiny:connected', function() {
-          CreateQuill('%s', '%s', '%s');
-        });", id, value, toolbarOptions)))
+        CreateQuill('%s', '%s', '%s');
+      ", id, value, toolbarOptions)))
     )
   )
 }
