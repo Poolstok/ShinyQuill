@@ -112,6 +112,22 @@ AddAttachments <- function(options, links, images, videos, formulas)
 }
 
 #' @export
+useQuill <- function()
+{
+  return(
+    tagList(
+      shiny::singleton(
+        shiny::tags$head(
+          shiny::tags$script(src = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"),
+          shiny::tags$script(src = "shinyquill/createQuill.js"),
+          shiny::tags$link(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css", rel = "stylesheet")
+        )
+      )
+    )
+  )
+}
+
+#' @export
 SetQuillOptions <- function(
     enableToolbar = TRUE,
 
@@ -176,15 +192,6 @@ quillInput <- function(id, label,
 
   return(
     tagList(
-      shiny::singleton(
-        shiny::tags$head(
-          shiny::tags$script(src = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"),
-          shiny::tags$script(src = "shinyquill/createQuill.js"),
-          shiny::tags$link(href = "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css", rel = "stylesheet")
-        )
-      ),
-      # includeQuill(),
-      # includeCustomFuncs(),
       tags$label(label),
       tags$div(id = id, style = style, class ="shiny-quill-editor"),
       tags$script(HTML(sprintf("

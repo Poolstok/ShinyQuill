@@ -11,6 +11,7 @@ library(shiny)
 library(ShinyQuill)
 
 ui <- fluidPage(
+    useQuill(),
     titlePanel("Sandbox App"),
     quillInput("editor", "Quill Editor", value = "Hello World!", toolbarOptions = SetQuillOptions(links = TRUE, images = T, videos = T, formulas = T)),
     uiOutput("text")
