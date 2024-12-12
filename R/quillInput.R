@@ -114,6 +114,8 @@ AddAttachments <- function(options, links, images, videos, formulas)
 #' @export
 useQuill <- function()
 {
+  shiny::addResourcePath("shinyquill", system.file("www", package = "ShinyQuill"))
+
   return(
     tagList(
       shiny::singleton(
@@ -188,7 +190,6 @@ quillInput <- function(id, label,
                        ...)
 {
   style <- CreateStyleArg(width, height, resize)
-  shiny::addResourcePath("shinyquill", system.file("www", package = "ShinyQuill"))
 
   return(
     tagList(
