@@ -111,6 +111,7 @@ AddAttachments <- function(options, links, images, videos, formulas)
   return(options)
 }
 
+#' @import shiny
 #' @export
 useQuill <- function()
 {
@@ -129,6 +130,7 @@ useQuill <- function()
   )
 }
 
+#' @import jsonlite
 #' @export
 SetQuillOptions <- function(
     enableToolbar = TRUE,
@@ -182,6 +184,7 @@ SetQuillOptions <- function(
   return(toolbarJSON)
 }
 
+#' @import shiny
 #' @export
 quillInput <- function(id, label,
                        value = "", width = "100%", height = "150px", resize = "vertical",
