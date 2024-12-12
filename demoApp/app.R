@@ -1,7 +1,8 @@
 tryCatch({
-    detach("package:ShinyQuill", unload=TRUE)},
+    detach("package:ShinyQuill", unload=TRUE)
+    print("Package detached. Reinstalling package...")},
     error = function(e) {
-        print("Package was not loaded")
+        print("Package was not loaded before. Installing package  now...")
     }
 )
 devtools::document()
